@@ -1,0 +1,26 @@
+<div>
+      <h1>Add Todo:</h1>
+      <Input type="text" placeholder='Type any task here!'
+      value={text} onChange={(e) => setText(e.target.value)} />
+      {/* <button onClick={addTodo}>Add</button> */}
+      {isEditMode === true ? (
+      <Button onClick={updateTodo}>Update</Button>
+      ) : (
+      <Button onClick={addTodo}>Add</Button>
+      )}
+
+      <ul>
+        {todoList.length > 0 ? (
+          todoList.map((todo, index) => {
+            return <li key={index}>
+              {todo}
+              { " " }
+              <button onClick={() => deleteTodo(index)}>Delete</button>
+              <button onClick={() => editTodo(index)}>Edit</button>
+            </li>
+          })
+        ) : (
+          ""
+        )}
+      </ul>
+    </div>
